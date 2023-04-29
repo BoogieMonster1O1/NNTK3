@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import NeuralNetworkToolkit
+//@testable import NeuralNetworkToolkit
 
 class NeuralNetworkToolkitTests: XCTestCase {
 

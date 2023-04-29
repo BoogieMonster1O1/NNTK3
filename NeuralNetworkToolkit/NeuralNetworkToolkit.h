@@ -11,6 +11,7 @@ FOUNDATION_EXPORT double NeuralNetworkToolkitVersionNumber;
 
 FOUNDATION_EXPORT const unsigned char NeuralNetworkToolkitVersionString[];
 
-#import <NeuralNetworkToolkit/Activation/NNTKActivationFunction.h>
-#import <NeuralNetworkToolkit/Activation/NNTKReLUActivationFunction.h>
-#import <NeuralNetworkToolkit/Activation/NNTKSigmoidActivationFunction.h>
+#import "NNTKLayer.h"
+#import "Activation/NNTKActivationFunction.h"
+#import "Activation/NNTKReLUActivationFunction.h"
+#import "Activation/NNTKSigmoidActivationFunction.h"

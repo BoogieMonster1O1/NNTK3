@@ -10,7 +10,6 @@
 		64CE96C829FC3D98002C5F27 /* NeuralNetworkToolkit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */; };
 		64CE96CE29FC3D98002C5F27 /* NeuralNetworkToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE96C329FC3D98002C5F27 /* NeuralNetworkToolkit.framework */; };
 		64CE96D329FC3D98002C5F27 /* NeuralNetworkToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE96D229FC3D98002C5F27 /* NeuralNetworkToolkitTests.swift */; };
-		64CE96D429FC3D98002C5F27 /* NeuralNetworkToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 64CE96C629FC3D98002C5F27 /* NeuralNetworkToolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64CE96E129FC3EB4002C5F27 /* NNTKLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64CE96E229FC3EB4002C5F27 /* NNTKLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CE96E029FC3EB4002C5F27 /* NNTKLayer.m */; };
 		64CE96E529FCCB39002C5F27 /* NNTKActivationFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 64CE96E429FCCB39002C5F27 /* NNTKActivationFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,8 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6488A12329FD7CA5009CDE6B /* NeuralNetworkToolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeuralNetworkToolkit.h; sourceTree = "<group>"; };
 		64CE96C329FC3D98002C5F27 /* NeuralNetworkToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeuralNetworkToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64CE96C629FC3D98002C5F27 /* NeuralNetworkToolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeuralNetworkToolkit.h; sourceTree = "<group>"; };
 		64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NeuralNetworkToolkit.docc; sourceTree = "<group>"; };
 		64CE96CD29FC3D98002C5F27 /* NeuralNetworkToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuralNetworkToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE96D229FC3D98002C5F27 /* NeuralNetworkToolkitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralNetworkToolkitTests.swift; sourceTree = "<group>"; };
@@ -85,9 +84,9 @@
 		64CE96C529FC3D98002C5F27 /* NeuralNetworkToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				6488A12329FD7CA5009CDE6B /* NeuralNetworkToolkit.h */,
 				64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */,
 				64CE96E329FC413F002C5F27 /* Activation */,
-				64CE96C629FC3D98002C5F27 /* NeuralNetworkToolkit.h */,
 				64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */,
 				64CE96E029FC3EB4002C5F27 /* NNTKLayer.m */,
 			);
@@ -125,7 +124,6 @@
 				64CE96E129FC3EB4002C5F27 /* NNTKLayer.h in Headers */,
 				64CE96E829FCCB5C002C5F27 /* NNTKReLUActivationFunction.h in Headers */,
 				64CE96E529FCCB39002C5F27 /* NNTKActivationFunction.h in Headers */,
-				64CE96D429FC3D98002C5F27 /* NeuralNetworkToolkit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
