@@ -7,6 +7,7 @@
 
 #import "NNTKLayer.h"
 #include <stdlib.h>
+#import <Accelerate/Accelerate.h>
 
 @implementation NNTKLayer
 
@@ -32,7 +33,20 @@
 }
 
 - (float *)forward:(float *)inputVector {
-    return NULL;
+    float *outputVector = calloc(_outputDimension, sizeof(float));
+    
+    cblas_sgemv(CblasRowMajor, CblasNoTrans,
+                (int)_outputDimension, (int)_inputDimension,
+                1.0, _weightsMatrix, (int)_inputDimension,
+                inputVector, 1,
+                1.0, outputVector, 1);
+    
+    for (NSUInteger i = 0; i < _outputDimension; i++) {
+        outputVector[i] += _biasesVector[i];
+        outputVector[i] = [_activationFunction activate:outputVector[i]];
+    }
+    
+    return outputVector;
 }
 
 @end
