@@ -19,8 +19,9 @@
         _outputDimension = outputDimension;
         _weightsMatrix = calloc(outputDimension * inputDimension, sizeof(float));
         _biasesVector = calloc(outputDimension, sizeof(float));
-        _cachedOutput = NULL;
-        _cachedUnactivatedOutput = NULL;
+        _cachedOutput = malloc(outputDimension * sizeof(float));
+        _cachedUnactivatedOutput = malloc(outputDimension * sizeof(float));
+        _cachedInput = malloc(inputDimension * sizeof(float));
     }
     return self;
 }
@@ -30,21 +31,35 @@
     free(_biasesVector);
     free(_cachedOutput);
     free(_cachedUnactivatedOutput);
+    free(_cachedInput);
 }
 
 - (float *)forward:(float *)inputVector {
     float *outputVector = calloc(_outputDimension, sizeof(float));
     
-    cblas_sgemv(CblasRowMajor, CblasNoTrans,
-                (int)_outputDimension, (int)_inputDimension,
-                1.0, _weightsMatrix, (int)_inputDimension,
-                inputVector, 1,
-                1.0, outputVector, 1);
+    cblas_sgemv(CblasRowMajor, CblasNoTrans, (int) _outputDimension, (int) _inputDimension, 1.0, _weightsMatrix, (int) _inputDimension, inputVector, 1, 1.0, outputVector, 1);
     
     for (NSUInteger i = 0; i < _outputDimension; i++) {
         outputVector[i] += _biasesVector[i];
         outputVector[i] = [_activationFunction activate:outputVector[i]];
     }
+    
+    return outputVector;
+}
+
+- (float *)forwardCached:(float *)inputVector {
+    float *outputVector = calloc(_outputDimension, sizeof(float));
+    
+    cblas_sgemv(CblasRowMajor, CblasNoTrans, (int) _outputDimension, (int) _inputDimension, 1.0, _weightsMatrix, (int) _inputDimension, inputVector, 1, 1.0, outputVector, 1);
+    
+    for (NSUInteger i = 0; i < _outputDimension; i++) {
+        outputVector[i] += _biasesVector[i];
+        _cachedUnactivatedOutput[i] = outputVector[i];
+        outputVector[i] = [_activationFunction activate:outputVector[i]];
+    }
+    
+    memcpy(_cachedOutput, outputVector, _outputDimension);
+    memcpy(_cachedInput, inputVector, _inputDimension);
     
     return outputVector;
 }

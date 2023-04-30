@@ -17,12 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSUInteger outputDimension;
 @property (nonatomic, assign) float *weightsMatrix;
 @property (nonatomic, assign) float *biasesVector;
-@property (nonatomic, assign, nullable) float *cachedOutput;
-@property (nonatomic, assign, nullable) float *cachedUnactivatedOutput;
+@property (nonatomic, assign) float *cachedOutput;
+@property (nonatomic, assign) float *cachedUnactivatedOutput;
+@property (nonatomic, assign) float *cachedInput;
 
 - (instancetype)initWithActivationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
 - (float *)forward:(float *)inputVector;
+
+- (float *)forwardCached:(float *)inputVector;
 
 - (void)deallocBuffers;
 
