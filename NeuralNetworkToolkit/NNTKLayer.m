@@ -9,7 +9,13 @@
 #include <stdlib.h>
 #import <Accelerate/Accelerate.h>
 
+static bool caching = false;
+
 @implementation NNTKLayer
+
++ (void)setCaching:(bool)value {
+    caching = value;
+}
 
 - (instancetype)initWithActivationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension {
     self = [super init];
@@ -19,9 +25,15 @@
         _outputDimension = outputDimension;
         _weightsMatrix = calloc(outputDimension * inputDimension, sizeof(float));
         _biasesVector = calloc(outputDimension, sizeof(float));
-        _cachedOutput = malloc(outputDimension * sizeof(float));
-        _cachedUnactivatedOutput = malloc(outputDimension * sizeof(float));
-        _cachedInput = malloc(inputDimension * sizeof(float));
+        if (caching) {
+            _cachedOutput = malloc(outputDimension * sizeof(float));
+            _cachedUnactivatedOutput = malloc(outputDimension * sizeof(float));
+            _cachedInput = malloc(inputDimension * sizeof(float));
+        } else {
+            _cachedOutput = NULL;
+            _cachedUnactivatedOutput = NULL;
+            _cachedInput = NULL;
+        }
     }
     return self;
 }
@@ -35,6 +47,10 @@
 }
 
 - (float *)forward:(float *)inputVector {
+    if (caching) {
+        return [self forwardCached:inputVector];
+    }
+    
     float *outputVector = calloc(_outputDimension, sizeof(float));
     
     cblas_sgemv(CblasRowMajor, CblasNoTrans, (int) _outputDimension, (int) _inputDimension, 1.0, _weightsMatrix, (int) _inputDimension, inputVector, 1, 1.0, outputVector, 1);
@@ -48,6 +64,7 @@
 }
 
 - (float *)forwardCached:(float *)inputVector {
+    
     float *outputVector = calloc(_outputDimension, sizeof(float));
     
     cblas_sgemv(CblasRowMajor, CblasNoTrans, (int) _outputDimension, (int) _inputDimension, 1.0, _weightsMatrix, (int) _inputDimension, inputVector, 1, 1.0, outputVector, 1);

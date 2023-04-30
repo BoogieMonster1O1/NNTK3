@@ -21,11 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float *cachedUnactivatedOutput;
 @property (nonatomic, assign) float *cachedInput;
 
++ (void)setCaching:(bool)value;
+
 - (instancetype)initWithActivationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
 - (float *)forward:(float *)inputVector;
-
-- (float *)forwardCached:(float *)inputVector;
 
 - (void)deallocBuffers;
 
