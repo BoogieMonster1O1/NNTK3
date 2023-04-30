@@ -18,6 +18,8 @@
         _outputDimension = outputDimension;
         _weightsMatrix = calloc(outputDimension * inputDimension, sizeof(float));
         _biasesVector = calloc(outputDimension, sizeof(float));
+        _cachedOutput = NULL;
+        _cachedUnactivatedOutput = NULL;
     }
     return self;
 }
@@ -30,7 +32,7 @@
 }
 
 - (float *)forward:(float *)inputVector {
-    return nullptr
+    return NULL;
 }
 
 @end
