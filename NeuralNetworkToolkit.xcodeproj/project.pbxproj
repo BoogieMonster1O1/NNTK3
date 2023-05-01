@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		647F131329FFF33700DF2BA2 /* NNTKNeuralNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 647F131129FFF33700DF2BA2 /* NNTKNeuralNetwork.h */; };
+		647F131429FFF33700DF2BA2 /* NNTKNeuralNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 647F131229FFF33700DF2BA2 /* NNTKNeuralNetwork.m */; };
+		647F131729FFF3CF00DF2BA2 /* NNTKTrainingParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 647F131529FFF3CF00DF2BA2 /* NNTKTrainingParameters.h */; };
+		647F131829FFF3CF00DF2BA2 /* NNTKTrainingParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 647F131629FFF3CF00DF2BA2 /* NNTKTrainingParameters.m */; };
 		64CE96C829FC3D98002C5F27 /* NeuralNetworkToolkit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */; };
 		64CE96CE29FC3D98002C5F27 /* NeuralNetworkToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE96C329FC3D98002C5F27 /* NeuralNetworkToolkit.framework */; };
 		64CE96D329FC3D98002C5F27 /* NeuralNetworkToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE96D229FC3D98002C5F27 /* NeuralNetworkToolkitTests.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		647F131129FFF33700DF2BA2 /* NNTKNeuralNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNTKNeuralNetwork.h; sourceTree = "<group>"; };
+		647F131229FFF33700DF2BA2 /* NNTKNeuralNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNTKNeuralNetwork.m; sourceTree = "<group>"; };
+		647F131529FFF3CF00DF2BA2 /* NNTKTrainingParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNTKTrainingParameters.h; sourceTree = "<group>"; };
+		647F131629FFF3CF00DF2BA2 /* NNTKTrainingParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNTKTrainingParameters.m; sourceTree = "<group>"; };
 		6488A12329FD7CA5009CDE6B /* NeuralNetworkToolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeuralNetworkToolkit.h; sourceTree = "<group>"; };
 		64CE96C329FC3D98002C5F27 /* NeuralNetworkToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeuralNetworkToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NeuralNetworkToolkit.docc; sourceTree = "<group>"; };
@@ -89,6 +97,10 @@
 				64CE96E329FC413F002C5F27 /* Activation */,
 				64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */,
 				64CE96E029FC3EB4002C5F27 /* NNTKLayer.m */,
+				647F131129FFF33700DF2BA2 /* NNTKNeuralNetwork.h */,
+				647F131229FFF33700DF2BA2 /* NNTKNeuralNetwork.m */,
+				647F131529FFF3CF00DF2BA2 /* NNTKTrainingParameters.h */,
+				647F131629FFF3CF00DF2BA2 /* NNTKTrainingParameters.m */,
 			);
 			path = NeuralNetworkToolkit;
 			sourceTree = "<group>";
@@ -123,7 +135,9 @@
 				64CE96EC29FCCB90002C5F27 /* NNTKSigmoidActivationFunction.h in Headers */,
 				64CE96E129FC3EB4002C5F27 /* NNTKLayer.h in Headers */,
 				64CE96E829FCCB5C002C5F27 /* NNTKReLUActivationFunction.h in Headers */,
+				647F131329FFF33700DF2BA2 /* NNTKNeuralNetwork.h in Headers */,
 				64CE96E529FCCB39002C5F27 /* NNTKActivationFunction.h in Headers */,
+				647F131729FFF3CF00DF2BA2 /* NNTKTrainingParameters.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,9 +239,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647F131829FFF3CF00DF2BA2 /* NNTKTrainingParameters.m in Sources */,
 				64CE96C829FC3D98002C5F27 /* NeuralNetworkToolkit.docc in Sources */,
 				64CE96ED29FCCB90002C5F27 /* NNTKSigmoidActivationFunction.m in Sources */,
 				64CE96E929FCCB5C002C5F27 /* NNTKReLUActivationFunction.m in Sources */,
+				647F131429FFF33700DF2BA2 /* NNTKNeuralNetwork.m in Sources */,
 				64CE96E229FC3EB4002C5F27 /* NNTKLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
