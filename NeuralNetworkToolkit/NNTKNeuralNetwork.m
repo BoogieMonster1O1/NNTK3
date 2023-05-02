@@ -6,7 +6,51 @@
 //
 
 #import "NNTKNeuralNetwork.h"
+#import <NeuralNetworkToolkit/NNTKReLUActivationFunction.h>
 
 @implementation NNTKNeuralNetwork
+
+- (instancetype)initWithInputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension outputActivationFunction:(id<NNTKActivationFunction>)activationFunction {
+    self = [super init];
+    
+    if (self) {
+        _inputDimension = inputDimension;
+        _outputDimension = outputDimension;
+        NNTKLayer *firstLayer = [[NNTKLayer alloc] initWithActivationFunction:activationFunction inputDimension:inputDimension outputDimension:outputDimension];
+        _layers = [@[firstLayer] mutableCopy];
+        _layerCount = 1;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithInputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension {
+    return [self initWithInputDimension:inputDimension outputDimension:outputDimension outputActivationFunction:[NNTKReLUActivationFunction new]];
+}
+
+- (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension activationFunction:(id<NNTKActivationFunction>)activationFunction {
+    _layerCount += 1;
+    NNTKLayer *lastLayer = [_layers lastObject];
+    [_layers removeLastObject];
+    NSUInteger hiddenLayerInput = _inputDimension;
+    if ([_layers lastObject]) {
+        hiddenLayerInput = [[_layers lastObject] outputDimension];
+    }
+    NNTKLayer *hiddenLayer = [[NNTKLayer alloc] initWithActivationFunction:activationFunction inputDimension:hiddenLayerInput outputDimension:outputDimension];
+    NNTKLayer *newLastLayer = [[NNTKLayer alloc] initWithActivationFunction:[lastLayer activationFunction] inputDimension:outputDimension outputDimension:_outputDimension];
+    [_layers addObject:hiddenLayer];
+    [_layers addObject:newLastLayer];
+    [lastLayer deallocBuffers];
+}
+
+- (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension {
+    [self addHiddenLayerWithOutputDimension:outputDimension activationFunction:[NNTKReLUActivationFunction new]];
+}
+
+- (void)deallocBuffers {
+    for (NSUInteger i = 0; i < _layerCount; i++) {
+        [_layers[(int) i] deallocBuffers];
+    }
+}
 
 @end

@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Activation/NNTKActivationFunction.h"
+#import <NeuralNetworkToolkit/NNTKActivationFunction.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

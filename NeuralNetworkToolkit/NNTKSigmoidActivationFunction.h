@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <NeuralNetworkToolkit/NNTKActivationFunction.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NNTKSigmoidActivationFunction : NSObject
+@interface NNTKSigmoidActivationFunction : NSObject <NNTKActivationFunction>
 
 @end
 

@@ -2,13 +2,13 @@
 //  NeuralNetworkToolkitTests.swift
 //  NeuralNetworkToolkitTests
 //
-//  Created by Shrish Deshpande on 4/28/23.
+//  Created by Shrish Deshpande on 5/2/23.
 //
 
 import XCTest
-//@testable import NeuralNetworkToolkit
+import NeuralNetworkToolkit
 
-class NeuralNetworkToolkitTests: XCTestCase {
+final class NeuralNetworkToolkitTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,11 +19,17 @@ class NeuralNetworkToolkitTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        let neuralNetwork = NNTKNeuralNetwork(inputDimension: 3, outputDimension: 5)
+        neuralNetwork.addHiddenLayer(withOutputDimension: 4)
+        neuralNetwork.addHiddenLayer(withOutputDimension: 8)
+        neuralNetwork.addHiddenLayer(withOutputDimension: 7)
+        neuralNetwork.addHiddenLayer(withOutputDimension: 8)
+        XCTAssertEqual(neuralNetwork.layerCount, 5 as UInt, "Wrong layer count")
+        neuralNetwork.getLayer(at: 0).assertInOut(3, 4)
+        neuralNetwork.getLayer(at: 1).assertInOut(4, 8)
+        neuralNetwork.getLayer(at: 2).assertInOut(8, 7)
+        neuralNetwork.getLayer(at: 3).assertInOut(7, 8)
+        neuralNetwork.getLayer(at: 4).assertInOut(8, 5)
     }
 
     func testPerformanceExample() throws {
@@ -32,5 +38,4 @@ class NeuralNetworkToolkitTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

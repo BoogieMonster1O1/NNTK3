@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <NeuralNetworkToolkit/NNTKActivationFunction.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NNTKReLUActivationFunction : NSObject
+@interface NNTKReLUActivationFunction : NSObject <NNTKActivationFunction>
 
 @end
 
