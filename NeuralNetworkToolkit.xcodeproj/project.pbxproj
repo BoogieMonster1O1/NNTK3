@@ -76,6 +76,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6484DA5C2A00FE7E00540B22 /* Activation */ = {
+			isa = PBXGroup;
+			children = (
+				647F13272A00E2CF00DF2BA2 /* NNTKActivationFunction.h */,
+				647F13212A00E26D00DF2BA2 /* NNTKReLUActivationFunction.h */,
+				647F13232A00E26E00DF2BA2 /* NNTKReLUActivationFunction.m */,
+				647F13242A00E26F00DF2BA2 /* NNTKSigmoidActivationFunction.h */,
+				647F13222A00E26E00DF2BA2 /* NNTKSigmoidActivationFunction.m */,
+			);
+			name = Activation;
+			sourceTree = "<group>";
+		};
 		64CE96B929FC3D98002C5F27 = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +109,8 @@
 		64CE96C529FC3D98002C5F27 /* NeuralNetworkToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				6484DA5C2A00FE7E00540B22 /* Activation */,
 				6488A12329FD7CA5009CDE6B /* NeuralNetworkToolkit.h */,
-				647F13272A00E2CF00DF2BA2 /* NNTKActivationFunction.h */,
-				647F13212A00E26D00DF2BA2 /* NNTKReLUActivationFunction.h */,
-				647F13232A00E26E00DF2BA2 /* NNTKReLUActivationFunction.m */,
-				647F13242A00E26F00DF2BA2 /* NNTKSigmoidActivationFunction.h */,
-				647F13222A00E26E00DF2BA2 /* NNTKSigmoidActivationFunction.m */,
 				64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */,
 				64CE96E029FC3EB4002C5F27 /* NNTKLayer.m */,
 				647F131129FFF33700DF2BA2 /* NNTKNeuralNetwork.h */,
