@@ -18,7 +18,7 @@ final class NeuralNetworkToolkitTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testCreation() throws {
         let neuralNetwork = NNTKNeuralNetwork(inputDimension: 3, outputDimension: 5)
         neuralNetwork.addHiddenLayer(withOutputDimension: 4)
         neuralNetwork.addHiddenLayer(withOutputDimension: 8)
@@ -32,10 +32,22 @@ final class NeuralNetworkToolkitTests: XCTestCase {
         neuralNetwork.getLayer(at: 4).assertInOut(8, 5)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSingleForward() throws {
+        let layer = NNTKLayer(activationFunction: NNTKReLUActivationFunction(), inputDimension: 2, outputDimension: 2)
+        layer.weightsMatrix[0] = 2
+        layer.weightsMatrix[1] = 0
+        layer.weightsMatrix[2] = 0
+        layer.weightsMatrix[3] = 2
+        layer.biasesVector[0] = 0
+        layer.biasesVector[1] = 2
+        let input: UnsafeMutablePointer<Float> = calloc(2, 4)!.assumingMemoryBound(to: Float.self)
+        input[0] = 5
+        input[1] = 4
+        layer.printBiasesVector()
+        layer.printWeightsMatrix()
+        let output1 = layer.forward(input)
+        XCTAssertEqual(output1[0], 10)
+        XCTAssertEqual(output1[1], 10)
+        output1.deallocate()
     }
 }

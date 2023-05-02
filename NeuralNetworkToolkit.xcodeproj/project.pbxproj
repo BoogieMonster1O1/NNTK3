@@ -103,13 +103,13 @@
 				647F13232A00E26E00DF2BA2 /* NNTKReLUActivationFunction.m */,
 				647F13242A00E26F00DF2BA2 /* NNTKSigmoidActivationFunction.h */,
 				647F13222A00E26E00DF2BA2 /* NNTKSigmoidActivationFunction.m */,
-				64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */,
 				64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */,
 				64CE96E029FC3EB4002C5F27 /* NNTKLayer.m */,
 				647F131129FFF33700DF2BA2 /* NNTKNeuralNetwork.h */,
 				647F131229FFF33700DF2BA2 /* NNTKNeuralNetwork.m */,
 				647F131529FFF3CF00DF2BA2 /* NNTKTrainingParameters.h */,
 				647F131629FFF3CF00DF2BA2 /* NNTKTrainingParameters.m */,
+				64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */,
 			);
 			path = NeuralNetworkToolkit;
 			sourceTree = "<group>";
