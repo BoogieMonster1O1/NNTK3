@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithInputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
+- (instancetype)initWithLayers:(NSArray<NNTKLayer *> *)layers;
+
 - (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension activationFunction:(id<NNTKActivationFunction>)activationFunction;
 
 - (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension;

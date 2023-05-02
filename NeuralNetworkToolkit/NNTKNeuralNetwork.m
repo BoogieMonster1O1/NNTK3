@@ -11,21 +11,29 @@
 @implementation NNTKNeuralNetwork
 
 - (instancetype)initWithInputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension outputActivationFunction:(id<NNTKActivationFunction>)activationFunction {
-    self = [super init];
-    
-    if (self) {
-        _inputDimension = inputDimension;
-        _outputDimension = outputDimension;
-        NNTKLayer *firstLayer = [[NNTKLayer alloc] initWithActivationFunction:activationFunction inputDimension:inputDimension outputDimension:outputDimension];
-        _layers = [@[firstLayer] mutableCopy];
-        _layerCount = 1;
-    }
-    
-    return self;
+    NNTKLayer *firstLayer = [[NNTKLayer alloc] initWithActivationFunction:activationFunction inputDimension:inputDimension outputDimension:outputDimension];
+    return [self initWithLayers: [@[firstLayer] mutableCopy]];
 }
 
 - (instancetype)initWithInputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension {
     return [self initWithInputDimension:inputDimension outputDimension:outputDimension outputActivationFunction:[NNTKReLUActivationFunction new]];
+}
+
+- (instancetype)initWithLayers:(NSArray<NNTKLayer *> *)layers {
+    self = [super init];
+    
+    if (self) {
+        if ([layers count] < 1) {
+            return nil;
+        }
+        
+        _inputDimension = [[layers firstObject] inputDimension];
+        _outputDimension = [[layers lastObject] outputDimension];
+        _layerCount = [layers count];
+        _layers = [layers mutableCopy];
+    }
+    
+    return self;
 }
 
 - (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension activationFunction:(id<NNTKActivationFunction>)activationFunction {

@@ -18,24 +18,34 @@ static bool caching = false;
 }
 
 - (instancetype)initWithActivationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension {
+    float *weights = calloc(outputDimension * inputDimension, sizeof(float));
+    float *biases = calloc(outputDimension, sizeof(float));
+    return [self initWithWeights:weights biases:biases activationFunction:activationFunction inputDimension:inputDimension outputDimension:outputDimension];
+}
+
+- (instancetype)initWithWeights:(float *)weights biases:(float *)biases activationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension {
     self = [super init];
     if (self) {
         _activationFunction = activationFunction;
         _inputDimension = inputDimension;
         _outputDimension = outputDimension;
-        _weightsMatrix = calloc(outputDimension * inputDimension, sizeof(float));
-        _biasesVector = calloc(outputDimension, sizeof(float));
-        if (caching) {
-            _cachedOutput = malloc(outputDimension * sizeof(float));
-            _cachedUnactivatedOutput = malloc(outputDimension * sizeof(float));
-            _cachedInput = malloc(inputDimension * sizeof(float));
-        } else {
-            _cachedOutput = NULL;
-            _cachedUnactivatedOutput = NULL;
-            _cachedInput = NULL;
-        }
+        _weightsMatrix = weights;
+        _biasesVector = biases;
+        [self initCaching];
     }
     return self;
+}
+
+- (void)initCaching {
+    if (caching) {
+        _cachedOutput = malloc(_outputDimension * sizeof(float));
+        _cachedUnactivatedOutput = malloc(_outputDimension * sizeof(float));
+        _cachedInput = malloc(_inputDimension * sizeof(float));
+    } else {
+        _cachedOutput = nil;
+        _cachedUnactivatedOutput = nil;
+        _cachedInput = nil;
+    }
 }
 
 - (void)deallocBuffers {
