@@ -20,6 +20,8 @@
 		647F132D2A00E5D500DF2BA2 /* NeuralNetworkToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F132C2A00E5D500DF2BA2 /* NeuralNetworkToolkitTests.swift */; };
 		6484DA572A00ED1900540B22 /* NNTKNeuralNetwork+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484DA562A00ED1900540B22 /* NNTKNeuralNetwork+Helpers.swift */; };
 		6484DA592A00ED2D00540B22 /* NNTKLayer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484DA582A00ED2D00540B22 /* NNTKLayer+Helpers.swift */; };
+		64985DA62A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 64985DA42A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.h */; };
+		64985DA72A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 64985DA52A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.m */; };
 		64CE96C829FC3D98002C5F27 /* NeuralNetworkToolkit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */; };
 		64CE96CE29FC3D98002C5F27 /* NeuralNetworkToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE96C329FC3D98002C5F27 /* NeuralNetworkToolkit.framework */; };
 		64CE96E129FC3EB4002C5F27 /* NNTKLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,6 +52,8 @@
 		6484DA562A00ED1900540B22 /* NNTKNeuralNetwork+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NNTKNeuralNetwork+Helpers.swift"; sourceTree = "<group>"; };
 		6484DA582A00ED2D00540B22 /* NNTKLayer+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NNTKLayer+Helpers.swift"; sourceTree = "<group>"; };
 		6488A12329FD7CA5009CDE6B /* NeuralNetworkToolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeuralNetworkToolkit.h; sourceTree = "<group>"; };
+		64985DA42A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+NNTKFloatUtils.h"; sourceTree = "<group>"; };
+		64985DA52A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+NNTKFloatUtils.m"; sourceTree = "<group>"; };
 		64CE96C329FC3D98002C5F27 /* NeuralNetworkToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeuralNetworkToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NeuralNetworkToolkit.docc; sourceTree = "<group>"; };
 		64CE96CD29FC3D98002C5F27 /* NeuralNetworkToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuralNetworkToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +92,15 @@
 			name = Activation;
 			sourceTree = "<group>";
 		};
+		6484DA5D2A00FF9E00540B22 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				647F131529FFF3CF00DF2BA2 /* NNTKTrainingParameters.h */,
+				647F131629FFF3CF00DF2BA2 /* NNTKTrainingParameters.m */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
 		64CE96B929FC3D98002C5F27 = {
 			isa = PBXGroup;
 			children = (
@@ -110,14 +123,15 @@
 			isa = PBXGroup;
 			children = (
 				6484DA5C2A00FE7E00540B22 /* Activation */,
+				6484DA5D2A00FF9E00540B22 /* Training */,
 				6488A12329FD7CA5009CDE6B /* NeuralNetworkToolkit.h */,
 				64CE96DF29FC3EB4002C5F27 /* NNTKLayer.h */,
 				64CE96E029FC3EB4002C5F27 /* NNTKLayer.m */,
 				647F131129FFF33700DF2BA2 /* NNTKNeuralNetwork.h */,
 				647F131229FFF33700DF2BA2 /* NNTKNeuralNetwork.m */,
-				647F131529FFF3CF00DF2BA2 /* NNTKTrainingParameters.h */,
-				647F131629FFF3CF00DF2BA2 /* NNTKTrainingParameters.m */,
 				64CE96C729FC3D98002C5F27 /* NeuralNetworkToolkit.docc */,
+				64985DA42A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.h */,
+				64985DA52A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.m */,
 			);
 			path = NeuralNetworkToolkit;
 			sourceTree = "<group>";
@@ -145,6 +159,7 @@
 				647F132A2A00E52300DF2BA2 /* NNTKReLUActivationFunction.h in Headers */,
 				647F131329FFF33700DF2BA2 /* NNTKNeuralNetwork.h in Headers */,
 				647F132B2A00E52900DF2BA2 /* NNTKSigmoidActivationFunction.h in Headers */,
+				64985DA62A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.h in Headers */,
 				647F131729FFF3CF00DF2BA2 /* NNTKTrainingParameters.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +267,7 @@
 				647F131829FFF3CF00DF2BA2 /* NNTKTrainingParameters.m in Sources */,
 				64CE96C829FC3D98002C5F27 /* NeuralNetworkToolkit.docc in Sources */,
 				647F13252A00E26F00DF2BA2 /* NNTKReLUActivationFunction.m in Sources */,
+				64985DA72A02AA0C0074738E /* NSMutableData+NNTKFloatUtils.m in Sources */,
 				647F131429FFF33700DF2BA2 /* NNTKNeuralNetwork.m in Sources */,
 				64CE96E229FC3EB4002C5F27 /* NNTKLayer.m in Sources */,
 				647F13262A00E26F00DF2BA2 /* NNTKSigmoidActivationFunction.m in Sources */,

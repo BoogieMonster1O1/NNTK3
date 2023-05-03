@@ -48,17 +48,10 @@
     NNTKLayer *newLastLayer = [[NNTKLayer alloc] initWithActivationFunction:[lastLayer activationFunction] inputDimension:outputDimension outputDimension:_outputDimension];
     [_layers addObject:hiddenLayer];
     [_layers addObject:newLastLayer];
-    [lastLayer deallocBuffers];
 }
 
 - (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension {
     [self addHiddenLayerWithOutputDimension:outputDimension activationFunction:[NNTKReLUActivationFunction new]];
-}
-
-- (void)deallocBuffers {
-    for (NSUInteger i = 0; i < _layerCount; i++) {
-        [_layers[(int) i] deallocBuffers];
-    }
 }
 
 @end

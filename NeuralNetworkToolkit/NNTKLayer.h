@@ -15,21 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id<NNTKActivationFunction> activationFunction;
 @property (nonatomic, assign) NSUInteger inputDimension;
 @property (nonatomic, assign) NSUInteger outputDimension;
-@property (nonatomic, assign) float *weightsMatrix;
-@property (nonatomic, assign) float *biasesVector;
-@property (nonatomic, assign) float *cachedOutput;
-@property (nonatomic, assign) float *cachedUnactivatedOutput;
-@property (nonatomic, assign) float *cachedInput;
+@property (nonatomic, strong) NSMutableData *weightsMatrix;
+@property (nonatomic, strong) NSMutableData *biasesVector;
+@property (nonatomic, strong, nullable) NSData *cachedOutput;
+@property (nonatomic, strong, nullable) NSData *cachedUnactivatedOutput;
+@property (nonatomic, strong, nullable) NSData *cachedInput;
 
 + (void)setCaching:(bool)value;
 
 - (instancetype)initWithActivationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
-- (instancetype)initWithWeights:(float *)weights biases:(float *)biases activationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
+- (instancetype)initWithWeights:(NSMutableData *)weights biases:(NSMutableData *)biases activationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
-- (float *)forward:(float *)inputVector;
-
-- (void)deallocBuffers;
+- (NSData *)forward:(NSData *)inputVector;
 
 @end
 
