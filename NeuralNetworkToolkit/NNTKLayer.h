@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithActivationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
-- (instancetype)initWithWeights:(NSMutableData *)weights biases:(NSMutableData *)biases activationFunction:(id<NNTKActivationFunction>)activationFunction;
+- (instancetype)initWithWeights:(NSMutableData *)weights biases:(NSMutableData *)biases activationFunction:(id<NNTKActivationFunction>)activationFunction inputDimension:(NSUInteger)inputDimension outputDimension:(NSUInteger)outputDimension;
 
 - (NSData *)forward:(NSData *)inputVector;
 

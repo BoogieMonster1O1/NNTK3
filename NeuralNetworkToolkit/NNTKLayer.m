@@ -50,7 +50,6 @@ static bool caching = false;
     
     NSMutableData *outputVector = [[NSMutableData alloc] initWithCapacity:(_outputDimension * sizeof(float))];
     float *rawOutput = [outputVector mutableFloats];
-    float *rawInput = (float *) [inputVector bytes];
     
     cblas_sgemv(
                 CblasRowMajor,
@@ -79,7 +78,6 @@ static bool caching = false;
 - (NSData *)forwardCached:(NSData *)inputVector {
     NSMutableData *outputVector = [[NSMutableData alloc] initWithCapacity:(_outputDimension * sizeof(float))];
     float *rawOutput = [outputVector mutableFloats];
-    float *rawInput = (float *) [inputVector bytes];
     
     cblas_sgemv(
                 CblasRowMajor,
