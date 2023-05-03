@@ -13,4 +13,8 @@
     return (float *) [self mutableBytes];
 }
 
+- (NSUInteger)numberOfFloats {
+    return [self length] / sizeof(float);
+}
+
 @end

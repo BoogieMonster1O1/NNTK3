@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (float *)mutableFloats;
 
+- (NSUInteger)numberOfFloats;
+
 @end
 
 NS_ASSUME_NONNULL_END
