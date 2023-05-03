@@ -61,7 +61,7 @@ static bool caching = false;
                 (const float *)[inputVector bytes],
                 1,
                 1.0,
-                [outputVector mutableFloats],
+                rawOutput,
                 1
                 );
     

@@ -22,7 +22,7 @@ extension NNTKLayer {
         for i in 0..<Int(outputDimension) {
             var str = ""
             for j in 0..<Int(inputDimension) {
-                str += String(self.weightsMatrix[i * Int(inputDimension) + j]);
+                str += String(self.weightsMatrix.mutableBytes.assumingMemoryBound(to: Float.self)[i * Int(inputDimension) + j]);
                 str += " "
             }
             print(str)
@@ -33,7 +33,7 @@ extension NNTKLayer {
         print("Biases Vector")
         var str = ""
         for i in 0..<Int(outputDimension) {
-            str += String(self.weightsMatrix[i as Int]);
+            str += String(self.biasesVector.mutableBytes.assumingMemoryBound(to: Float.self)[i as Int]);
             str += " "
         }
         print(str)

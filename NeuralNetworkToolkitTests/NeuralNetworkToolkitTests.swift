@@ -31,8 +31,8 @@ final class NeuralNetworkToolkitTests: XCTestCase {
     }
 
     func testSingleForward() throws {
-        let weights: UnsafeMutablePointer<Float> = calloc(4, 4)!.assumingMemoryBound(to: Float.self)
-        let biases: UnsafeMutablePointer<Float> = calloc(2, 4)!.assumingMemoryBound(to: Float.self)
+        let weights: UnsafeMutablePointer<Float> = malloc(4 * MemoryLayout<Float>.stride)!.assumingMemoryBound(to: Float.self)
+        let biases: UnsafeMutablePointer<Float> = malloc(2 * MemoryLayout<Float>.stride)!.assumingMemoryBound(to: Float.self)
         weights[0] = 2
         weights[1] = 0
         weights[2] = 0
@@ -40,13 +40,17 @@ final class NeuralNetworkToolkitTests: XCTestCase {
         biases[0] = 0
         biases[1] = 2
         let layer = NNTKLayer(weights: NSMutableData(bytesNoCopy: weights, length: 16, freeWhenDone: true), biases: NSMutableData(bytesNoCopy: biases, length: 8, freeWhenDone: true), activationFunction: NNTKReLUActivationFunction(), inputDimension: 2, outputDimension: 2)
-        let input: UnsafeMutablePointer<Float> = calloc(2, 4)!.assumingMemoryBound(to: Float.self)
+        let input: UnsafeMutablePointer<Float> = malloc(2 * MemoryLayout<Float>.stride)!.assumingMemoryBound(to: Float.self)
         input[0] = 5
         input[1] = 4
         layer.printBiasesVector()
         layer.printWeightsMatrix()
-        let output1 = NSMutableData(data: layer.forward(Data(bytesNoCopy: input, count: 8, deallocator: .free))).bytes.assumingMemoryBound(to: Float.self)
-        XCTAssertEqual(output1[0], 10)
-        XCTAssertEqual(output1[1], 10)
+        let inputData = Data(bytesNoCopy: input, count: 8, deallocator: .free)
+        let data = layer.forward(inputData)
+        let count = data.count / MemoryLayout<Float>.stride
+        var floats = [Float]()
+        print(floats.debugDescription)
+        XCTAssertEqual(floats[0], 10)
+        XCTAssertEqual(floats[1], 10)
     }
 }
