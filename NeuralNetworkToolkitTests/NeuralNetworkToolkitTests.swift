@@ -46,11 +46,9 @@ final class NeuralNetworkToolkitTests: XCTestCase {
         layer.printBiasesVector()
         layer.printWeightsMatrix()
         let inputData = Data(bytesNoCopy: input, count: 8, deallocator: .free)
-        let data = layer.forward(inputData)
-        let count = data.count / MemoryLayout<Float>.stride
-        var floats = [Float]()
-        print(floats.debugDescription)
-        XCTAssertEqual(floats[0], 10)
-        XCTAssertEqual(floats[1], 10)
+        let data = layer.forward(inputData).bytes.assumingMemoryBound(to: Float.self)
+        print(data.debugDescription)
+        XCTAssertEqual(data[0], 10)
+        XCTAssertEqual(data[1], 10)
     }
 }

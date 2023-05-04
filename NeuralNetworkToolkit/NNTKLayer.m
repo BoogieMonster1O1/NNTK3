@@ -43,7 +43,7 @@ static bool caching = false;
     _cachedInput = nil;
 }
 
-- (NSData *)forward:(NSData *)inputVector {
+- (NSMutableData *)forward:(NSData *)inputVector {
     if (caching) {
         return [self forwardCached:inputVector];
     }
@@ -75,7 +75,7 @@ static bool caching = false;
     return outputVector;
 }
 
-- (NSData *)forwardCached:(NSData *)inputVector {
+- (NSMutableData *)forwardCached:(NSData *)inputVector {
     NSMutableData *outputVector = [[NSMutableData alloc] initWithCapacity:(_outputDimension * sizeof(float))];
     float *rawOutput = [outputVector mutableFloats];
     

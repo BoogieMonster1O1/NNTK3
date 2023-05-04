@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addHiddenLayerWithOutputDimension:(NSUInteger)outputDimension;
 
-- (NSData *)forward:(NSData *)input;
+- (NSMutableData *)forward:(NSData *)input;
 
 @end
 
