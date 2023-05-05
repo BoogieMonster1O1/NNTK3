@@ -40,7 +40,7 @@ final class NeuralNetworkToolkitTests: XCTestCase {
         biases[0] = 0
         biases[1] = 2
         let layer = NNTKLayer(weights: NSMutableData(bytesNoCopy: weights, length: 16, freeWhenDone: true), biases: NSMutableData(bytesNoCopy: biases, length: 8, freeWhenDone: true), activationFunction: NNTKReLUActivationFunction(), inputDimension: 2, outputDimension: 2)
-        let input: UnsafeMutablePointer<Float> = malloc(2 * MemoryLayout<Float>.stride)!.assumingMemoryBound(to: Float.self)
+        let input = malloc(2 * MemoryLayout<Float>.stride)!.assumingMemoryBound(to: Float.self)
         input[0] = 5
         input[1] = 4
         layer.printBiasesVector()
